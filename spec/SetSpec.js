@@ -15,7 +15,6 @@ SetLibrary.prototype.setUnion = function(originalset1, originalset2){
 
   console.log(newSetUnion);
   
-
   return true;
             
           
@@ -28,7 +27,7 @@ SetLibrary.prototype.contentspresent = function(setString,setcontent){
   this.setString = setString;
   var newSetString = new Set(setString);
     
-   console.log(newSetString.has(setcontent));
+  console.log(newSetString.has(setcontent));
   return true;
          
 
@@ -48,7 +47,8 @@ SetLibrary.prototype.setIntersection = function(set1,set2){
 
        
   if(this.set2.has(i)){
-   
+    
+          
 
         
   newIntersect = newIntersect.add(i);
@@ -71,7 +71,7 @@ SetLibrary.prototype.setIntersection = function(set1,set2){
     this.set2 = new Set(set2);
 
 
-   
+    
     for(let i of this.set2){
 
       if(this.set1.has(i))
@@ -80,7 +80,7 @@ SetLibrary.prototype.setIntersection = function(set1,set2){
         
           newNullSet.add(i);
           console.log("This is not a Null Set");
-         console.log(newNullSet);
+          console.log(newNullSet);
           return true;
       
         }
@@ -91,7 +91,7 @@ SetLibrary.prototype.setIntersection = function(set1,set2){
             {
 
             if(newNullSet.size === 0){
-                console.log("This is a Null Set");
+                 console.log("This is a Null Set");
                
             }
       
@@ -130,8 +130,7 @@ SetLibrary.prototype.setIntersection = function(set1,set2){
           
         this.set1 = new Set(set1);
         this.set2 =  new Set(set2);
-        console.log(this.set1);
-          
+       
             
          var setDifference1 = new Set(
          [...this.set1].filter(x => !this.set2.has(x)));
@@ -154,7 +153,7 @@ SetLibrary.prototype.setIntersection = function(set1,set2){
     this.Universal = new Set(Universal);
     this.set2 = new Set(set2);
     var complimentValue = new Set([...this.Universal].filter(x => !this.set2.has(x)));
-    console.log(complimentValue);
+     console.log(complimentValue);
 
   return true;
 
@@ -220,3 +219,146 @@ SetLibrary.prototype.setIntersection = function(set1,set2){
   setlist.setComplement(set5, set1);
   setlist.subsetOfSet(set1, set2);
    
+
+
+
+  // this checks the existence of all the functions available in SetLibrary class   
+
+  describe("function existence", function() {
+   
+   it("should have setUnion property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("setUnion")).toBe(true);
+
+   });
+
+   it("should have setIntersection property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("setIntersection")).toBe(true);
+
+   });
+
+  it("should have contentspresent  property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("contentspresent")).toBe(true);
+
+   });
+
+  it("should have nullSet property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("nullSet")).toBe(true);
+
+   
+   });
+  it("should have  setdifference  property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("setdifference")).toBe(true);
+    });
+  it("should have symmetricDifference property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("symmetricDifference")).toBe(true);
+  })
+  it("should have setComplement property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("setComplement")).toBe(true);
+    });
+  it("should have subsetOfSet property", function(){
+      expect(SetLibrary.prototype.hasOwnProperty("subsetOfSet")).toBe(true);
+    });
+
+
+
+  // this checks if these properties are functions
+  describe("function checker", function(){
+
+
+  it("should have a property which is a function called setUnion", function(){
+      expect(typeof setlist.setUnion).toBe(typeof (function(){}));
+
+   });
+  it("should have a property which is a function called contentspresent", function(){
+      expect(typeof setlist.contentspresent).toBe(typeof (function(){}));
+
+
+  });
+  it("should have a property which is a function called setIntersection", function(){
+      expect(typeof setlist.setIntersection).toBe(typeof (function(){}));
+
+
+  });
+
+  it("should have a property which is a function called nullSet", function(){
+      expect(typeof setlist.nullSet).toBe(typeof (function(){}));
+
+
+  });
+
+  it("should have a property which is a function called setdifference", function(){
+      expect(typeof setlist.setdifference).toBe(typeof (function(){}));
+
+
+  });
+
+  it("should have a property which is a function called symmetricDifference", function(){
+      expect(typeof setlist.symmetricDifference).toBe(typeof (function(){}));
+
+
+  });
+
+  it("should have a property which is a function called setComplement", function(){
+      expect(typeof setlist.setComplement).toBe(typeof (function(){}));
+
+
+  });
+
+  it("should have a property which is a function called subsetOfSet", function(){
+      expect(typeof setlist.subsetOfSet).toBe(typeof (function(){}));
+
+
+  });
+
+
+
+
+  });
+
+  });
+
+  // this checks the return value of each methods
+  describe("setUnion method", function(){
+    it("should only be valid if the value inputted is an Array", function(){
+        expect(setlist.setUnion()).toEqual(true);
+      });
+    });
+  describe("setIntersection method", function(){
+    it("should only be valid if the value inputted is an Array", function(){
+        expect(setlist.setIntersection()).toEqual(true);
+      });
+    });
+  describe("contentspresent method", function(){
+    it("should only be valid if the value inputted is an Array", function(){
+        expect(setlist.contentspresent()).toEqual(true);
+      });
+    });
+
+  describe("nullSet method", function(){
+    it("should only be valid if the two parameter value inputted is an Array", function(){
+        expect(setlist.nullSet()).toEqual(true);
+      });
+    });
+  describe("setdifference method", function(){
+    it("should only be valid if the two parameter value inputted is an Array and unempty", function(){
+        expect(setlist.setdifference()).toEqual(true);
+      });
+    });
+
+  describe("symmetricDifference method", function(){
+    it("should only be valid if the two parameter value inputted is an Array and unempty", function(){
+        expect(setlist.nullSet()).toEqual(true);
+      });
+    });
+  describe("subsetOfSet method", function(){
+    it("should only be valid if the two sets value inputted is an Array and unempty", function(){
+        expect(setlist.subsetOfSet()).toEqual(true);
+      });
+    });
+
+
+
+
+
+
+
